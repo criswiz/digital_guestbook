@@ -1,0 +1,131 @@
+<!-- templates/view_guestbook.html -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>View Guestbook</title>
+    <style>
+      /* Add this CSS in a separate stylesheet or within a <style> tag in your HTML */
+
+      /* Apply a background color to the page */
+      body {
+        background-color: #ffffff;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Style the header */
+      h1 {
+        background-color: #333;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+      }
+
+      /* Style the filter and sort form */
+      form {
+        background-color: #fff;
+        padding: 10px;
+        margin: 20px auto;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      label {
+        font-weight: bold;
+      }
+
+      input[type="text"] {
+        width: 200px;
+        padding: 5px;
+        margin: 5px;
+        border: 1px solid #ccc;
+      }
+
+      select {
+        padding: 5px;
+        margin: 5px;
+        border: 1px solid #ccc;
+      }
+
+      input[type="submit"] {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+      }
+
+      /* Style the guestbook entries table */
+      table {
+        background-color: #fff;
+        width: 95%;
+        margin: 20px auto;
+        border-collapse: collapse;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+      }
+
+      th {
+        background-color: #f2f2f2;
+      }
+
+      /* Style the link back to the guestbook form */
+      a {
+        display: block;
+        text-align: center;
+        margin: 20px auto;
+        text-decoration: none;
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        width: 250px;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Guestbook Entries</h1>
+
+    <!-- Filter and Sort Form -->
+    <form method="GET">
+      <label for="filter">Filter by Name:</label>
+      <input type="text" id="filter" name="filter" />
+      <label for="sort">Sort by:</label>
+      <select id="sort" name="sort">
+        <option value="name_asc">Name (Ascending)</option>
+        <option value="name_desc">Name (Descending)</option>
+        <option value="date_asc">Date (Ascending)</option>
+        <option value="date_desc">Date (Descending)</option>
+      </select>
+      <input type="submit" value="Apply" />
+    </form>
+
+    <!-- Guestbook Entries Table -->
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Message</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for entry in entries %}
+        <tr>
+          <td>{{ entry.name }}</td>
+          <td>{{ entry.email }}</td>
+          <td>{{ entry.message }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <a href="/">Back to Guestbook Entry Form</a>
+  </body>
+</html>
